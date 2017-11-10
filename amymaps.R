@@ -49,5 +49,24 @@ plot(p, add=T)
 plot(pp, add=T)
 
 
+amyraster
+library(quadmesh)
+library(rgl)
+library(plot3D)
+library(lattice)
+library(rasterVis)
+data(volcano)
+r <- raster(volcano)
+extent(r) <- c(0, 610, 0, 870)
+levelplot(r, col.regions=terrain.colors)
+rasterVis::plot3D(amycut,col=terrain.colors(25))
 
+volcanos <- list(r,r)
+col <- c("blue", "red")
+open3d()
+mfrow3d(2,1)
+for (i in 1:2) {
+  next3d()   
+  plot3D(volcanos[[i]], col=col[i])
+}
 
